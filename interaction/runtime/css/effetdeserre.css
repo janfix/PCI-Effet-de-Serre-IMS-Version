@@ -484,3 +484,35 @@ Copyright DEPP - Ministère de l'éducation nationale
 .qti-customInteraction .effetdeserre .prompt {
     position: relative;
 }
+
+.qti-customInteraction .effetdeserre .action{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+  justify-content: center;
+}
+
+.qti-customInteraction .effetdeserre .slider{
+    border: 1px red solid;
+    width : 400px;
+}
+
+.qti-customInteraction .effetdeserre .moins{
+    margin-right: 10px;
+   
+}
+
+.qti-customInteraction .effetdeserre .plus{
+    margin-left:10px
+   
+}
+
+
+.qti-customInteraction .ui-slider-handle {
+    width : 25px ;
+    height : 40px;
+    background-color: #ff6600;
+    margin-top: -13px;
+}

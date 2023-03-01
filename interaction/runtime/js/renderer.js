@@ -16,16 +16,14 @@
  * Copyright (c) 2016 (original work) Open Assessment Technologies SA;
  *
  */
-define(['taoQtiItem/portableLib/jquery_2_1_1', 
-        'effetdeserrePCI/interaction/runtime/js/assets',
+define(['effetdeserrePCI/interaction/runtime/js/lib/jquery-ui', 
         'css!effetdeserrePCI/interaction/runtime/css/effetdeserre'
-    ], function($, assets) {
+    ], function($) {
     'use strict';
 
     function renderChoices(id, $container, config) {
 
         var answ;
-        console.log(assets.background)
         //SVG String 
         var svgyellowarrow = 
         '<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="297mm" height="210mm" viewBox="0 0 1052.3622 744.09448" id="svg23701" class="svg23701" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="fleche1.svg"> <defs id="defs23703" /> <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="0.7" inkscape:cx="596.17719" inkscape:cy="351.26694" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="false" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:window-x="1672" inkscape:window-y="-8" inkscape:window-maximized="1" /> <metadata id="metadata23706"> <rdf:RDF> <cc:Work rdf:about=""> <dc:format>image/svg+xml</dc:format> <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" /> <dc:title></dc:title> </cc:Work> </rdf:RDF> </metadata> <g inkscape:label="Calque 1" inkscape:groupmode="layer" id="layer1" transform="translate(0,-308.26772)"> <path style="fill:#ff6600;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.35159135;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 287.66461,483.02029 c 17.22114,-4.51242 33.3137,-8.29347 46.80271,-17.32946 16.50757,-11.05803 26.23096,-21.84206 37.58483,-37.89312 13.29884,-24.02512 27.47856,-57.78082 27.47856,-57.78082 l -18.55661,0.30108 37.80211,-29.20766 24.20789,29.14655 -17.44554,1.36297 c 0,0 -8.10861,26.16843 -19.66935,54.39843 -11.15673,22.29637 -24.62687,46.1822 -46.72353,60.84483 -27.85736,18.48525 -68.01156,24.47554 -103.38283,17.95342 z" id="path24253" class="path24253" inkscape:connector-curvature="0" sodipodi:nodetypes="cscccccccscc" /> <path style="fill:#ffcc00;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.35159135;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 313.73802,758.69281 37.92718,1.79309 -52.10287,78.58225 -82.20893,-62.19789 31.03443,-11.06406 -63.10326,-251.01876 -29.46181,70.22791 11.78472,2.12811 -29.4618,31.92178 -21.2125,-36.17802 12.96319,3.19219 c 0,0 14.59412,-55.51597 7.07084,-80.8685 -11.38704,-38.37294 -37.318294,-70.5826 -65.994454,-103.21375 -28.67615,-32.63115 -106.06249,-92.57315 -106.06249,-92.57315 l 154.379864,-1.06406 c 0,0 69.52609,50.41946 98.97187,84.64109 27.1992,31.61067 74.27579,88.1975 74.27579,88.1975 l -35.77423,24.01781 z" id="path24251" class="path24251" inkscape:connector-curvature="0" sodipodi:nodetypes="cccccccccccssccsccc" /> </g> </svg>';
@@ -34,7 +32,51 @@ define(['taoQtiItem/portableLib/jquery_2_1_1',
         $container.find(".svgyellowarr").append(svgyellowarrow);
         $container.find(".aniflex").append(bgandarrows);
 
-        $container.find(".consigne").append(" - moins  <input type='range' class='ranger'> plus +");
+        $container.find(".consigne").append("<div class='action'><div class='moins grade'> - moins </div>  <div class='slider'></div><div class='plus grade'> + plus</div> </div><input class='ranger' type='number' hidden>");
+
+        $(".slider").slider({
+            value:0,
+            min: 0,
+            max: 100,
+            slide: function (event, ui) {
+                answ = ui.value/100;
+                $container.find(".efdsasw").append(answ+","); 
+
+                var seuil = ui.value / 100;
+              
+                if (seuil < 0.26) {
+                    $smallfleche.show();
+                    $fleche1.show();
+                    $mfleche.hide();
+                    $m2fleche.hide();
+                    $bigfleche.hide();
+                }
+                else if (seuil > 0.25 && seuil < 0.51) {
+                    $smallfleche.hide();
+                    $fleche1.hide();
+                    $mfleche.show();
+                    $m2fleche.hide();
+                    $bigfleche.hide();
+                }
+                else if (seuil > 0.5 && seuil < 0.76) {
+                    $smallfleche.hide();
+                    $fleche1.hide();
+                    $mfleche.hide();
+                    $m2fleche.show();
+                    $bigfleche.hide();
+                }
+                else if (seuil > 0.75) {
+                    $smallfleche.hide();
+                    $fleche1.hide();
+                    $mfleche.hide();
+                    $m2fleche.hide();
+                    $bigfleche.show();
+                }
+
+                var opaco = seuil - 0.1;
+                $container.find(".atmos").css("background-color", "rgba(255, 255, 255," + opaco + ")");
+            }
+        });
 
         var $ranger = $container.find(".ranger");
         var $smallfleche = $container.find(".smallfleche");
@@ -47,46 +89,6 @@ define(['taoQtiItem/portableLib/jquery_2_1_1',
         $ranger.attr("max", "0.8");
         $ranger.attr("step", "0.1");
         $ranger.attr("value", "0");
-
-
-        $container.on("input", ".ranger", function () {
-            answ = answ + $ranger.val();
-            if (answ.length < 80) { $container.find(".efdsasw").append("'" + $ranger.val() + "',"); }
-
-            var seuil = parseFloat($(this).val());
-
-            if (seuil < 0.26) {
-                $smallfleche.show();
-                $fleche1.show();
-                $mfleche.hide();
-                $m2fleche.hide();
-                $bigfleche.hide();
-            }
-            else if (seuil > 0.25 && seuil < 0.51) {
-                $smallfleche.hide();
-                $fleche1.hide();
-                $mfleche.show();
-                $m2fleche.hide();
-                $bigfleche.hide();
-            }
-            else if (seuil > 0.5 && seuil < 0.76) {
-                $smallfleche.hide();
-                $fleche1.hide();
-                $mfleche.hide();
-                $m2fleche.show();
-                $bigfleche.hide();
-            }
-            else if (seuil > 0.75) {
-                $smallfleche.hide();
-                $fleche1.hide();
-                $mfleche.hide();
-                $m2fleche.hide();
-                $bigfleche.show();
-            }
-
-            var opaco = $(this).val() - 0.1;
-            $container.find(".atmos").css("background-color", "rgba(255, 255, 255," + opaco + ")");
-        });
 
     }
 

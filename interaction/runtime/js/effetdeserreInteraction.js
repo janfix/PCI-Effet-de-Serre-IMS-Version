@@ -85,9 +85,11 @@ define([
          */
         getResponse: function getResponse() {
 
-            var $container = $(this.dom),
-            value = $container.find('.efdsasw').text();
-            value = value.slice(0, -1); // delete last coma.
+            var $container = $(this.dom);
+            var nbValue = $container.find('.efdsasw').text();
+            nbValue = nbValue.slice(0, -1)
+            var value = '{"sliderValue":"'+nbValue+'"}' ;
+           
 
             return { base: { string: value } };
         },
