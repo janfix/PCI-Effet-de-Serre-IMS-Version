@@ -18,7 +18,7 @@
  */
 define([
     'qtiCustomInteractionContext',
-    'taoQtiItem/portableLib/jquery_2_1_1',
+    'effetdeserrePCI/interaction/runtime/js/lib/jquery-ui',
     'effetdeserrePCI/interaction/runtime/js/renderer',
     'taoQtiItem/portableLib/OAT/util/event'
 ], function(qtiCustomInteractionContext, $, renderer, event) {
