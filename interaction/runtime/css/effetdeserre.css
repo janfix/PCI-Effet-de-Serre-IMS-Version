@@ -2,17 +2,7 @@
 Copyright DEPP - Ministère de l'éducation nationale 
 */
 
-
 /*add some style, need to scope (using the typeIdentifier as class prefix) every style declaration to prevent collision */
-
-.effetdeserreInteraction {
-    font-size: unset;
-    text-align: left;
-    background: #fff;
-    font-weight: 100;
-    color: black;
-    padding-bottom: 5px!important;
-}
 
 .qti-customInteraction .effetdeserre .efdsasw {
     display: none;
@@ -183,7 +173,7 @@ Copyright DEPP - Ministère de l'éducation nationale
     background-color: rgba(255, 255, 255, 0.1);
     width: 954px;
     height: 126px;
-}
+} 
 
 .qti-customInteraction .effetdeserre .svg23701 {
     width: 815px;
@@ -234,7 +224,7 @@ Copyright DEPP - Ministère de l'éducation nationale
     height: 60px;
 }
 
-@-webkit-keyframes efs-anif {
+@-webkit-keyframes efs-anif{
     from {
         opacity: 0;
     }
@@ -243,7 +233,7 @@ Copyright DEPP - Ministère de l'éducation nationale
     }
 }
 
-@-moz-keyframes efs-anif {
+@-moz-keyframes efs-anif{
     from {
         opacity: 0;
     }
@@ -274,7 +264,7 @@ Copyright DEPP - Ministère de l'éducation nationale
 
 .qti-customInteraction .effetdeserre .etiq {
     background-color: rgba(0, 0, 255, 0.2);
-    padding: 5px;
+    padding: 8px;
     border: 1px white solid;
     color: white;
     text-align: center;
@@ -495,31 +485,35 @@ Copyright DEPP - Ministère de l'éducation nationale
     position: relative;
 }
 
-.qti-customInteraction .effetdeserre .action {
+.qti-customInteraction .effetdeserre .action{
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+  justify-content: center;
 }
 
-.qti-customInteraction .effetdeserre .slider {
+.qti-customInteraction .effetdeserre .slider{
     border: 1px red solid;
-    width: 400px;
+    width : 400px;
 }
 
-.qti-customInteraction .effetdeserre .moins {
+.qti-customInteraction .effetdeserre .moins{
     margin-right: 10px;
+   
 }
 
-.qti-customInteraction .effetdeserre .plus {
-    margin-left: 10px
+.qti-customInteraction .effetdeserre .plus{
+    margin-left:10px
+   
 }
+
 
 .qti-customInteraction .effetdeserre .ui-slider-handle {
-    width: 25px;
-    height: 40px;
-    background-color: #ff6600;
-    margin-top: -13px;
+    width : 25px!important ;
+    height : 40px!important;
+    background-color: #ff6600!important;
+    margin-top: -13px!important;
+    border-radius: 5px!important;
 }
